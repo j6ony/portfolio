@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-7n5l=1byl5cn8nl13717lr7xlt79%2#sl*((ta-e5oii)#d^qc')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', '.vercel.app']
 
 
 # Application definition
@@ -59,7 +59,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'dist'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,11 +77,14 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
 
 
@@ -123,6 +126,10 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5175',
     'http://127.0.0.1:5175',
 ]
+
+if not DEBUG:
+    CORS_ALLOWED_ORIGINS.append('https://portfolio-backend.onrender.com')
+    # CORS_ALLOWED_ORIGINS.append('https://your-vercel-app.vercel.app')
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
@@ -134,10 +141,18 @@ CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1:5175',
 ]
 
+if not DEBUG:
+    CSRF_TRUSTED_ORIGINS.append('https://portfolio-backend.onrender.com')
+    # CSRF_TRUSTED_ORIGINS.append('https://your-vercel-app.vercel.app')
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = BASE_DIR / 'dist' / 'assets',
+STATICFILES_DIRS = []
+if (BASE_DIR / 'dist' / 'assets').exists():
+    STATICFILES_DIRS.append(BASE_DIR / 'dist' / 'assets')
+
+
