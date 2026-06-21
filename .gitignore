@@ -33,3 +33,5 @@ db.sqlite3
 *.log
 pnpm-workspace.yaml
 
+
+pnpm-lock.yaml
