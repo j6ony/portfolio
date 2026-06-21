@@ -1,0 +1,4 @@
+﻿# Django
+django>=6.0,<7.0
+django-simpleui
+django-cors-headers
