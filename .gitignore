@@ -1,5 +1,6 @@
 ﻿# Dependencies
 node_modules/
+_node_modules/
 .pnpm-store/
 .pnpm/
 package-lock.json
@@ -31,3 +32,4 @@ db.sqlite3
 # Logs
 *.log
 pnpm-workspace.yaml
+
