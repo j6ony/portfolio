@@ -1,0 +1,33 @@
+﻿# Dependencies
+node_modules/
+.pnpm-store/
+.pnpm/
+package-lock.json
+
+# Build output
+dist/
+staticfiles/
+
+# Environment
+.env
+.env.local
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Django
+db.sqlite3
+
+# Logs
+*.log
+pnpm-workspace.yaml
