@@ -4,12 +4,12 @@
     "framework":  "vite",
     "rewrites":  [
                      {
-                         "destination":  "https://portfolio-backend.onrender.com/admin/$1",
+                         "destination":  "https://wdefang3.pythonanywhere.com/admin/$1",
                          "source":  "/admin/(.*)"
                      },
                      {
                          "source":  "/api/(.*)",
-                         "destination":  "https://portfolio-backend.onrender.com/api/$1"
+                         "destination":  "https://wdefang3.pythonanywhere.com/api/$1"
                      },
                      {
                          "source":  "/(.*)",
