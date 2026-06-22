@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-7n5l=1byl5cn8n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', '.vercel.app', '.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', '.vercel.app', '.pythonanywhere.com', '.zeabur.app']
 
 
 # Application definition
@@ -132,7 +132,6 @@ PRODUCTION_FRONTEND_URL = os.environ.get('PRODUCTION_FRONTEND_URL', 'https://por
 
 if not DEBUG:
     CORS_ALLOWED_ORIGINS.append(PRODUCTION_FRONTEND_URL)
-    CORS_ALLOWED_ORIGINS.append('https://portfolio-backend.onrender.com')
     CORS_ALLOWED_ORIGINS.append(PRODUCTION_FRONTEND_URL)
 CORS_ALLOW_CREDENTIALS = True
 
@@ -147,7 +146,6 @@ CSRF_TRUSTED_ORIGINS = [
 
 if not DEBUG:
     CSRF_TRUSTED_ORIGINS.append(PRODUCTION_FRONTEND_URL)
-    CSRF_TRUSTED_ORIGINS.append('https://portfolio-backend.onrender.com')
     CSRF_TRUSTED_ORIGINS.append(PRODUCTION_FRONTEND_URL)
 
 
