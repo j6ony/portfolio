@@ -1,4 +1,4 @@
-# Dependencies
+﻿# Dependencies
 node_modules/
 _node_modules/
 package-lock.json
@@ -32,7 +32,10 @@ db.sqlite3
 # Logs
 *.log
 
+# Temp scripts
+fix_*.py
+temp_*.py
 
-
+# Project copies
 wdf/
 wdf1234/

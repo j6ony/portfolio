@@ -132,7 +132,6 @@ PRODUCTION_FRONTEND_URL = os.environ.get('PRODUCTION_FRONTEND_URL', 'https://por
 
 if not DEBUG:
     CORS_ALLOWED_ORIGINS.append(PRODUCTION_FRONTEND_URL)
-    CORS_ALLOWED_ORIGINS.append(PRODUCTION_FRONTEND_URL)
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
@@ -146,12 +145,12 @@ CSRF_TRUSTED_ORIGINS = [
 
 if not DEBUG:
     CSRF_TRUSTED_ORIGINS.append(PRODUCTION_FRONTEND_URL)
-    CSRF_TRUSTED_ORIGINS.append(PRODUCTION_FRONTEND_URL)
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
+WHITENOISE_ROOT = BASE_DIR / 'dist'
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
