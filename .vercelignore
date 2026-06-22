@@ -13,6 +13,3 @@ __pycache__
 agent.md
 script.py
 test_js.js
-pnpm-workspace.yaml
-
-pnpm-lock.yaml

@@ -1,4 +1,4 @@
-﻿import os
+import os
 """
 Django settings for config project.
 
@@ -130,7 +130,9 @@ CORS_ALLOWED_ORIGINS = [
 
 if not DEBUG:
     CORS_ALLOWED_ORIGINS.append('https://portfolio-backend.onrender.com')
-    # CORS_ALLOWED_ORIGINS.append('https://your-vercel-app.vercel.app')
+    vercel_url = os.environ.get('VERCEL_URL')
+    if vercel_url:
+        CORS_ALLOWED_ORIGINS.append(f'https://{vercel_url}')
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
@@ -144,7 +146,8 @@ CSRF_TRUSTED_ORIGINS = [
 
 if not DEBUG:
     CSRF_TRUSTED_ORIGINS.append('https://portfolio-backend.onrender.com')
-    # CSRF_TRUSTED_ORIGINS.append('https://your-vercel-app.vercel.app')
+    if vercel_url:
+        CSRF_TRUSTED_ORIGINS.append(f'https://{vercel_url}')
 
 
 # Static files (CSS, JavaScript, Images)
