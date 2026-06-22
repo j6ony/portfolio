@@ -1,4 +1,4 @@
-﻿import json
+import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Shuju
@@ -47,10 +47,3 @@ def contact_api(request):
         'success': True,
         'message': '感谢您的留言！我会尽快与您联系。'
     })
-
-# Create your views here.
-
-from django.shortcuts import render
-
-def frontend(request, path=''):
-    return render(request, 'index.html')

@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-7n5l=1byl5cn8n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', '.vercel.app', '.pythonanywhere.com', '.zeabur.app']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', '.vercel.app', '.netlify.app', '.pythonanywhere.com', '.zeabur.app']
 
 
 # Application definition
@@ -128,7 +128,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:5175',
 ]
 
-PRODUCTION_FRONTEND_URL = os.environ.get('PRODUCTION_FRONTEND_URL', 'https://portfolio-j6gbcun6p-excuse1.vercel.app')
+PRODUCTION_FRONTEND_URL = os.environ.get('PRODUCTION_FRONTEND_URL', 'https://portfolio.netlify.app')
 
 if not DEBUG:
     CORS_ALLOWED_ORIGINS.append(PRODUCTION_FRONTEND_URL)
@@ -150,7 +150,6 @@ if not DEBUG:
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-WHITENOISE_ROOT = BASE_DIR / 'dist'
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
@@ -160,8 +159,6 @@ STORAGES = {
     },
 }
 STATICFILES_DIRS = []
-if (BASE_DIR / 'dist' / 'assets').exists():
-    STATICFILES_DIRS.append(BASE_DIR / 'dist' / 'assets')
 
 
 
