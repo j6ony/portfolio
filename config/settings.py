@@ -128,11 +128,11 @@ CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:5175',
 ]
 
+PRODUCTION_FRONTEND_URL = os.environ.get('PRODUCTION_FRONTEND_URL', 'https://portfolio-j6gbcun6p-excuse1.vercel.app')
+
 if not DEBUG:
+    CORS_ALLOWED_ORIGINS.append(PRODUCTION_FRONTEND_URL)
     CORS_ALLOWED_ORIGINS.append('https://portfolio-backend.onrender.com')
-    vercel_url = os.environ.get('VERCEL_URL')
-    if vercel_url:
-        CORS_ALLOWED_ORIGINS.append(f'https://{vercel_url}')
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
@@ -145,9 +145,8 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 if not DEBUG:
+    CSRF_TRUSTED_ORIGINS.append(PRODUCTION_FRONTEND_URL)
     CSRF_TRUSTED_ORIGINS.append('https://portfolio-backend.onrender.com')
-    if vercel_url:
-        CSRF_TRUSTED_ORIGINS.append(f'https://{vercel_url}')
 
 
 # Static files (CSS, JavaScript, Images)
